@@ -15,3 +15,11 @@ C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315
 C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.csproj.CoreCompileInputs.cache
 C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.exe
 C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.pdb
+C:\Users\andre\Documents\GitHub\CMPG315_Project\ChatBox\obj\Debug\ChatBox.csproj.AssemblyReference.cache
+C:\Users\andre\Documents\GitHub\CMPG315_Project\ChatBox\obj\Debug\ChatBox.csproj.SuggestedBindingRedirects.cache
+C:\Users\andre\Documents\GitHub\CMPG315_Project\ChatBox\obj\Debug\ChatBox.Form1.resources
+C:\Users\andre\Documents\GitHub\CMPG315_Project\ChatBox\obj\Debug\ChatBox.Properties.Resources.resources
+C:\Users\andre\Documents\GitHub\CMPG315_Project\ChatBox\obj\Debug\ChatBox.csproj.GenerateResource.cache
+C:\Users\andre\Documents\GitHub\CMPG315_Project\ChatBox\obj\Debug\ChatBox.csproj.CoreCompileInputs.cache
+C:\Users\andre\Documents\GitHub\CMPG315_Project\ChatBox\obj\Debug\ChatBox.exe
+C:\Users\andre\Documents\GitHub\CMPG315_Project\ChatBox\obj\Debug\ChatBox.pdb

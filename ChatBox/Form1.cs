@@ -23,17 +23,16 @@ namespace ChatBox
             InitializeComponent();
         }
 
-        
 
         private void Form1_Load(object theSender, EventArgs e)
         {
             //first we are setting up the socket
-            sckt = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, Protocol.Udp);
-            sckt.SetSockets(SetSocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            sckt = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            sckt.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
             //secondly we are setting up getting the user IP
-            textLocalMachineIp.Text = GetLocalIP();
-            textRemoteMachineIp.Text = GetLocalIP();
+            txtLocalIP.Text = GetLocalIP();
+            txtRemoteIP.Text = GetLocalIP();
 
         }
 
@@ -51,7 +50,16 @@ namespace ChatBox
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            //bind the socket
+            ePLocalMachine = new IPEndPoint(IPAddress.Parse(txtLocalIP.Text), Convert.ToInt32(txtLocalPort.Text));
+            sckt.Bind(ePLocalMachine);
 
+            //connect to remote IP
+            ePRemoteMachine = new IPEndPoint(IPAddress.Parse(txtRemoteIP.Text), Convert.ToInt32(txtRemotePort.Text));
+            sckt.Connect(ePRemoteMachine);
+            //listen to a specific port
+            buffer = new byte[1500];
+            sckt.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref ePRemoteMachine, new AsyncCallback(MessageCallBack), buffer);
         }
         
     }
