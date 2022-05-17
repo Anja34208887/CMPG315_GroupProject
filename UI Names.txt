@@ -1,0 +1,23 @@
+--[txtLocalIP]--
+User enters their IP address there 
+
+--[txtLocalPort]-- 
+User enters their port number there
+
+--[txtRemoteIP]--
+User enters the reciver's IP address there
+
+--[txtRemotePort]-- 
+User enters the reciver's port number there
+
+--[btnConnect]--
+Connects Users
+
+--[lboxChat]--
+Chat messages are displayed here
+
+--[txtMess]--
+User enters their message there
+
+--[btnSend]--
+Sends the message
