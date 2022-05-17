@@ -1,0 +1,20 @@
+private void MessageCallBack(IAsyncResult IAResult)
+        {
+            try
+            {
+                byte[] receiveData = new byte[1500];
+                receiveData = (byte[])IAResult.AsyncState;
+
+                ASCIIEncoding ASCIIE = new ASCIIEncoding();
+                string receivedMessage = ASCIIE.GetString(receiveData);
+
+                listBox_Message.Items.Add("Friend: " + receivedMessage);
+
+                buffer = new byte[1500];
+                SOCK.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }
+            catch (Exception EX)
+            {
+                MessageBox.Show(EX.ToString());
+            }
+        }
