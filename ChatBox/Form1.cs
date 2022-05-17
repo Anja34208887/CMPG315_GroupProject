@@ -23,6 +23,8 @@ namespace ChatBox
             InitializeComponent();
         }
 
+        
+
         private void Form1_Load(object theSender, EventArgs e)
         {
             //first we are setting up the socket
@@ -35,6 +37,22 @@ namespace ChatBox
 
         }
 
+        private string GetLocalIP()
+        {
+            IPHostEntry hst;
+            hst = Dns.GetHostEntry(Dns.GetHostByName());
+            foreach (IPAddress IP in hst.AddressList)
+            {
+                if (IP.AddressFamily == AddressFamily.InterNetwork)
+                    return IP.ToString();
+            }
+            return "127.0.0.1";
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+
+        }
         
     }
 }

@@ -8,3 +8,10 @@ C:\Users\Stiaan\Desktop\ChatBox\obj\Debug\ChatBox.csproj.GenerateResource.cache
 C:\Users\Stiaan\Desktop\ChatBox\obj\Debug\ChatBox.csproj.CoreCompileInputs.cache
 C:\Users\Stiaan\Desktop\ChatBox\obj\Debug\ChatBox.exe
 C:\Users\Stiaan\Desktop\ChatBox\obj\Debug\ChatBox.pdb
+C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.csprojAssemblyReference.cache
+C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.Form1.resources
+C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.Properties.Resources.resources
+C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.csproj.GenerateResource.cache
+C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.csproj.CoreCompileInputs.cache
+C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.exe
+C:\Users\leset\Documents\North-West University\Final Year\First Semester\CMPG315\Project phase 3\ChatBox\obj\Debug\ChatBox.pdb

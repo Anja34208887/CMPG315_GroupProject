@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnConnect = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lboxChat = new System.Windows.Forms.ListBox();
-            this.txtLocalIP = new System.Windows.Forms.TextBox();
             this.txtLocalPort = new System.Windows.Forms.TextBox();
-            this.txtRemoteIP = new System.Windows.Forms.TextBox();
+            this.txtLocalIP = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtRemotePort = new System.Windows.Forms.TextBox();
+            this.txtRemoteIP = new System.Windows.Forms.TextBox();
+            this.btnConnect = new System.Windows.Forms.Button();
+            this.lboxChat = new System.Windows.Forms.ListBox();
             this.txtMess = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -52,12 +52,50 @@
             this.groupBox1.Controls.Add(this.txtLocalIP);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(16, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(238, 107);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(317, 132);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "My Info:";
+            // 
+            // txtLocalPort
+            // 
+            this.txtLocalPort.Location = new System.Drawing.Point(59, 94);
+            this.txtLocalPort.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLocalPort.Name = "txtLocalPort";
+            this.txtLocalPort.Size = new System.Drawing.Size(215, 22);
+            this.txtLocalPort.TabIndex = 6;
+            // 
+            // txtLocalIP
+            // 
+            this.txtLocalIP.Location = new System.Drawing.Point(59, 47);
+            this.txtLocalIP.Margin = new System.Windows.Forms.Padding(4);
+            this.txtLocalIP.Name = "txtLocalIP";
+            this.txtLocalIP.Size = new System.Drawing.Size(215, 22);
+            this.txtLocalIP.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 97);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Port: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 47);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 16);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "IP: ";
             // 
             // groupBox2
             // 
@@ -65,121 +103,102 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtRemotePort);
             this.groupBox2.Controls.Add(this.txtRemoteIP);
-            this.groupBox2.Location = new System.Drawing.Point(316, 12);
+            this.groupBox2.Location = new System.Drawing.Point(421, 15);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(238, 107);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(317, 132);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reviever\'s Info:";
             // 
-            // btnConnect
+            // label4
             // 
-            this.btnConnect.Location = new System.Drawing.Point(570, 53);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(75, 23);
-            this.btnConnect.TabIndex = 2;
-            this.btnConnect.Text = "Connect";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "IP: ";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 79);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Port: ";
-            // 
-            // lboxChat
-            // 
-            this.lboxChat.FormattingEnabled = true;
-            this.lboxChat.Location = new System.Drawing.Point(12, 125);
-            this.lboxChat.Name = "lboxChat";
-            this.lboxChat.Size = new System.Drawing.Size(666, 290);
-            this.lboxChat.TabIndex = 11;
-            // 
-            // txtLocalIP
-            // 
-            this.txtLocalIP.Location = new System.Drawing.Point(44, 38);
-            this.txtLocalIP.Name = "txtLocalIP";
-            this.txtLocalIP.Size = new System.Drawing.Size(162, 20);
-            this.txtLocalIP.TabIndex = 4;
-            // 
-            // txtLocalPort
-            // 
-            this.txtLocalPort.Location = new System.Drawing.Point(44, 76);
-            this.txtLocalPort.Name = "txtLocalPort";
-            this.txtLocalPort.Size = new System.Drawing.Size(162, 20);
-            this.txtLocalPort.TabIndex = 6;
-            // 
-            // txtRemoteIP
-            // 
-            this.txtRemoteIP.Location = new System.Drawing.Point(44, 38);
-            this.txtRemoteIP.Name = "txtRemoteIP";
-            this.txtRemoteIP.Size = new System.Drawing.Size(162, 20);
-            this.txtRemoteIP.TabIndex = 7;
-            // 
-            // txtRemotePort
-            // 
-            this.txtRemotePort.Location = new System.Drawing.Point(44, 76);
-            this.txtRemotePort.Name = "txtRemotePort";
-            this.txtRemotePort.Size = new System.Drawing.Size(162, 20);
-            this.txtRemotePort.TabIndex = 8;
-            // 
-            // txtMess
-            // 
-            this.txtMess.Location = new System.Drawing.Point(12, 436);
-            this.txtMess.Name = "txtMess";
-            this.txtMess.Size = new System.Drawing.Size(585, 20);
-            this.txtMess.TabIndex = 9;
-            // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(603, 434);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 10;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 97);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Port: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 41);
+            this.label3.Location = new System.Drawing.Point(8, 50);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.Size = new System.Drawing.Size(26, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "IP: ";
             // 
-            // label4
+            // txtRemotePort
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 79);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Port: ";
+            this.txtRemotePort.Location = new System.Drawing.Point(59, 94);
+            this.txtRemotePort.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRemotePort.Name = "txtRemotePort";
+            this.txtRemotePort.Size = new System.Drawing.Size(215, 22);
+            this.txtRemotePort.TabIndex = 8;
+            // 
+            // txtRemoteIP
+            // 
+            this.txtRemoteIP.Location = new System.Drawing.Point(59, 47);
+            this.txtRemoteIP.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRemoteIP.Name = "txtRemoteIP";
+            this.txtRemoteIP.Size = new System.Drawing.Size(215, 22);
+            this.txtRemoteIP.TabIndex = 7;
+            // 
+            // btnConnect
+            // 
+            this.btnConnect.Location = new System.Drawing.Point(760, 65);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(4);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(100, 28);
+            this.btnConnect.TabIndex = 2;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+            // 
+            // lboxChat
+            // 
+            this.lboxChat.FormattingEnabled = true;
+            this.lboxChat.ItemHeight = 16;
+            this.lboxChat.Location = new System.Drawing.Point(16, 154);
+            this.lboxChat.Margin = new System.Windows.Forms.Padding(4);
+            this.lboxChat.Name = "lboxChat";
+            this.lboxChat.Size = new System.Drawing.Size(887, 356);
+            this.lboxChat.TabIndex = 11;
+            // 
+            // txtMess
+            // 
+            this.txtMess.Location = new System.Drawing.Point(16, 537);
+            this.txtMess.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMess.Name = "txtMess";
+            this.txtMess.Size = new System.Drawing.Size(779, 22);
+            this.txtMess.TabIndex = 9;
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(804, 534);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(100, 28);
+            this.btnSend.TabIndex = 10;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 491);
+            this.ClientSize = new System.Drawing.Size(920, 604);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtMess);
             this.Controls.Add(this.lboxChat);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "ChatBox";
             this.groupBox1.ResumeLayout(false);
