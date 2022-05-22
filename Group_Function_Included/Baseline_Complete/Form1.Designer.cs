@@ -199,9 +199,9 @@
             // 
             this.ContactsList.FormattingEnabled = true;
             this.ContactsList.Items.AddRange(new object[] {
-            "Contact1:IPAddress:Port",
-            "Contact2:IPAddress:Port",
-            "Contact3:IPAddress:Port"});
+            "Dirk:10.0.0.4:49677",
+            "Emile:192.168.1.10:45615",
+            "Andrew:192.168.1.20:56986"});
             this.ContactsList.Location = new System.Drawing.Point(684, 24);
             this.ContactsList.Name = "ContactsList";
             this.ContactsList.Size = new System.Drawing.Size(120, 95);

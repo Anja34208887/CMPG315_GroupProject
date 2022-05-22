@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace ChatBox
 {
@@ -16,7 +17,7 @@ namespace ChatBox
     {
         Socket sckt, sckt2;
         EndPoint ePLocalMachine, ePRemoteMachine, ePRemoteMachine1, ePRemoteMachine2;
-        byte[] buffer;
+        byte[] buffer, buffer1, buffer2;
         int Counter;
 
         public Form1()
@@ -96,21 +97,25 @@ namespace ChatBox
         {
             Counter = 1;
 
-            //bind the socket
-            ePLocalMachine = new IPEndPoint(IPAddress.Parse(txtLocalIP.Text), Convert.ToInt32(txtLocalPort.Text));
-            sckt.Bind(ePLocalMachine);
-            sckt2.Bind(ePLocalMachine);
+            //first we are setting up the socket
+            sckt = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            sckt.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+
+            //Second socket for group chat
+            sckt2 = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            sckt2.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
 
             //connect to remote IP
             string Contact1 = "";
             string Contact2 = "";
             int counter = 0;
+            string MyPort = "";
             for (int i = 0; i < ContactsList.Items.Count; i++)
             {
                 string[] Details = ContactsList.Items[i].ToString().Split(':');
                 if(Details[1] == GetLocalIP().ToString())
                 {
-                    counter = counter;
+                    MyPort = Details[2];
                 }
                 else if(counter == 0)
                 {
@@ -124,22 +129,43 @@ namespace ChatBox
                 }
             }
 
+            //bind the socket
+            ePLocalMachine = new IPEndPoint(IPAddress.Parse(GetLocalIP()), Convert.ToInt32(MyPort));
+            sckt.Bind(ePLocalMachine);
+            sckt2.Bind(ePLocalMachine);
+
             string[] Contact1Split = Contact1.Split(':');
             string[] Contact2Split = Contact2.Split(':');
 
-            ePRemoteMachine1 = new IPEndPoint(IPAddress.Parse(Contact1Split[1]), Convert.ToInt32(Contact1Split[2]));
-            ePRemoteMachine2 = new IPEndPoint(IPAddress.Parse(Contact2Split[1]), Convert.ToInt32(Contact2Split[2]));
+
+            ePRemoteMachine1 = new IPEndPoint(IPAddress.Parse(GetLocalIP()), Convert.ToInt32(MyPort));
+            ePRemoteMachine2 = new IPEndPoint(IPAddress.Parse(GetLocalIP()), Convert.ToInt32(MyPort));
 
             sckt.Connect(ePRemoteMachine1);
             sckt2.Connect(ePRemoteMachine2);
 
-            //listen to a specific port
-            buffer = new byte[1500];
-            sckt.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref ePRemoteMachine1, new AsyncCallback(MessageCallback), buffer); 
+            Thread TOne = new Thread(new ThreadStart(BeginReceive1));
+            Thread TTwo = new Thread(new ThreadStart(BeginReceive2));
 
-            //listen to second port
-            sckt2.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref ePRemoteMachine2, new AsyncCallback(MessageCallback2), buffer);
+            TOne.Start();
+            TTwo.Start();
         }
+
+        private void BeginReceive1()
+        {
+            //listen to a specific port
+            buffer1 = new byte[1500];
+            sckt.BeginReceiveFrom(buffer1, 0, buffer1.Length, SocketFlags.None, ref ePRemoteMachine1, new AsyncCallback(MessageCallback3), buffer1);
+        }
+
+        private void BeginReceive2()
+        {
+            
+            //listen to second port
+            buffer2 = new byte[1500];
+            sckt2.BeginReceiveFrom(buffer2, 0, buffer2.Length, SocketFlags.None, ref ePRemoteMachine2, new AsyncCallback(MessageCallback2), buffer2);
+        }
+
 
         private void ContactsList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -148,6 +174,7 @@ namespace ChatBox
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             //first we are setting up the socket
             sckt = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             sckt.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
@@ -169,18 +196,48 @@ namespace ChatBox
                 string receivedMessage = encode.GetString(receivedData);
 
                 //Add message to the listbox 
-                if(Counter == 0)
-                {
-                    lboxChat.Items.Add("Friend:" + receivedMessage);
-                }
-                else
-                {
-                    lboxChat.Items.Add("Friend 1:" + receivedMessage);
-                }
+                
+                lboxChat.Items.Add("Friend:" + receivedMessage);
+                
                 
 
                 buffer = new byte[1500];
                 sckt.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref ePRemoteMachine, new AsyncCallback(MessageCallback), buffer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void MessageCallback3(IAsyncResult iaResult)
+        {
+            try
+            {
+                byte[] receivedData = new byte[1500];
+                receivedData = (byte[])iaResult.AsyncState;
+
+                //convert byte array to string
+                ASCIIEncoding encode = new ASCIIEncoding();
+                string receivedMessage = encode.GetString(receivedData);
+
+                Thread.Sleep(500);
+
+                if (lboxChat.InvokeRequired)
+                {
+                    lboxChat.Invoke(new Action(BeginReceive1));
+                    return;
+                }
+                //Add message to the listbox 
+                lboxChat.Items.Add("Friend 1:" + receivedMessage);
+
+                Thread.Sleep(500);
+
+
+
+                buffer1 = new byte[1500];
+                sckt.BeginReceiveFrom(buffer1, 0, buffer1.Length, SocketFlags.None, ref ePRemoteMachine1, new AsyncCallback(MessageCallback3), buffer1);
+
             }
             catch (Exception ex)
             {
@@ -199,11 +256,19 @@ namespace ChatBox
                 ASCIIEncoding encode = new ASCIIEncoding();
                 string receivedMessage = encode.GetString(receivedData);
 
+
+                if (lboxChat.InvokeRequired)
+                {
+                    lboxChat.Invoke(new Action(BeginReceive2));
+                    return;
+                }
+
                 //Add message to the listbox 
                 lboxChat.Items.Add("Friend 2:" + receivedMessage);
 
-                buffer = new byte[1500];
-                sckt2.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref ePRemoteMachine2, new AsyncCallback(MessageCallback2), buffer);
+                
+                buffer2 = new byte[1500];
+                sckt2.BeginReceiveFrom(buffer2, 0, buffer2.Length, SocketFlags.None, ref ePRemoteMachine2, new AsyncCallback(MessageCallback2), buffer2);
             }
             catch (Exception ex)
             {
